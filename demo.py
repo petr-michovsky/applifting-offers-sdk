@@ -12,7 +12,7 @@ base_url = os.getenv("BASE_URL")
 async def main():
     client = OffersAPIClient(refresh_token=refresh_token, base_url=base_url)
 
-    # Create a product
+    # Create a product using the Product model from offers_sdk.models
     product = Product(
         id=uuid4(),
         name="Test Product",
@@ -20,17 +20,18 @@ async def main():
         offers=[]
     )
 
-    # Use the register_product method of the client
+    # Use the register_product method of the client and pass in the product as a parameter
     registered = await client.register_product(product)
     print("Registered product:")
     print(registered)
 
     print("")
 
-    # Use the get_product_with_offers method of the client
+    # Use the get_product_with_offers method of the client and pass in the id of the product
     offers = await client.get_product_with_offers(registered.id)
     print(f"Offers for product with id: {product.id}")
     print(offers)
+    # Return a list of Offers - a model from offers_sdk.models
 
 
 if __name__ == "__main__":
