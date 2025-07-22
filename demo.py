@@ -31,7 +31,7 @@ async def main():
     offers = await client.get_product_with_offers(registered.id)
     print(f"Offers for product with id: {product.id}")
     print(offers)
-    # Return a list of Offers - a model from offers_sdk.models
+    # Returns a list of Offers - a model from offers_sdk.models
 
 
 if __name__ == "__main__":
