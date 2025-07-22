@@ -1,0 +1,36 @@
+# Python cache
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# Virtual environment
+.venv/
+env/
+venv/
+
+# Environment config
+.env
+*.env
+
+# Auth/token files
+.access_token.json
+
+# IDE / Editor-specific files
+.idea/
+*.iml
+
+# macOS-specific
+.DS_Store
+
+# Test output
+htmlcov/
+*.cover
+*.log
+
+# Pytest
+.pytest_cache/
+.cache/
+
+# Bytecode or compiled files
+*.so
