@@ -36,6 +36,28 @@ class OffersAPIClient:
         self.auth = AuthManager(refresh_token, base_url)
         self.client = httpx.AsyncClient(base_url=base_url)
 
+    async def __aenter__(self):
+        """
+        Enter the async context manager.
+
+        Returns:
+            OffersAPIClient: The initialized client instance with a ready-to-use AsyncClient.
+        """
+        return self
+
+    async def __aexit__(self, exc_type, exc_val, exc_tb):
+        """
+        Exit the async context manager.
+
+        Ensures the underlying httpx.AsyncClient is properly closed to free resources.
+
+        Args:
+            exc_type: Type of the exception (if any) that caused the context to exit.
+            exc_val: The exception instance (if any).
+            exc_tb: The traceback (if any) associated with the exception.
+        """
+        await self.client.aclose()
+
     @classmethod
     def from_env(cls):
         """
